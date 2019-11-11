@@ -1,0 +1,75 @@
+<html>
+		<head>
+			<title>
+				Nexted Functions in Js
+			</title>
+		</head>
+		<body>
+			<H1>Dynamically Generated List Using a Nested Function</H1>
+
+			<form>
+				<input type="" name="keyword" onblur="adisia(this.value)">
+			</form>
+
+			<span class="list"></span>
+		</body>
+		<script type="text/javascript">
+			function drawList(data){
+					var theList = document.createElement("ul");
+
+					var addRow = (item,index="")=> {
+							const row = document.createElement("li");
+							row.innerHTML = item;
+							row.setAttribute("id",index);
+							return row;
+					}
+//Loop through the data parameter appending list items using add Row.
+					var ind = 0;
+					for(let i of data){
+						++ind;
+
+							theList.appendChild(addRow(i,ind));
+					}
+
+					return theList;
+			}
+			
+
+
+
+
+			let data = ["Cat","Lion","Leopard"];
+
+
+			let keyword = document.querySelector('[name=keyword]').value;
+
+			
+				//Function to add a list item
+			function adisia(keyword){
+					if(keyword.length){
+							console.log(keyword);
+							
+							document.querySelector('[name=keyword]').value = "";
+							
+							list = document.querySelector('ul');
+							listCount = list.childElementCount;
+
+							const addrow = document.createElement("li");
+							addrow.innerHTML = keyword;
+							addrow.setAttribute("id",listCount+1);
+
+							list.appendChild(addrow);
+					}
+					
+			}
+
+			var host = document.querySelector('.list');
+			host.append(drawList(data));
+			
+
+
+
+
+			
+		</script>
+</html>
